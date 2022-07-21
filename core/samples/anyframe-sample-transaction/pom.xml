@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	
-	<parent>
-		<groupId>org.anyframe</groupId>
-		<artifactId>anyframe-sample-parent</artifactId>
-		<version>5.3.1-SNAPSHOT</version>
-	</parent>
+<!--	<parent>-->
+<!--		<groupId>org.anyframe</groupId>-->
+<!--		<artifactId>anyframe-sample-parent</artifactId>-->
+<!--		<version>5.3.1-SNAPSHOT</version>-->
+<!--	</parent>-->
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.anyframe</groupId>
@@ -59,7 +59,8 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate</artifactId>
-			<version>4.3.0.Final</version>
+			<version>3.5.4-Final</version>
+			<type> pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
@@ -67,10 +68,13 @@
 			<version>1.0.0.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>hsqldb</groupId>
+			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.0.0</version>
+			<version>2.6.1</version>
+			<scope>test</scope>
 		</dependency>
+
+
 		<dependency>
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
@@ -183,22 +187,27 @@
 			<version>1.5.3</version>
 		</dependency>
 		<dependency>
-			<groupId>ojdbc</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>14</version>
-			<scope>provided</scope>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.12.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-		<dependency>
-			<groupId>weblogic</groupId>
-			<artifactId>weblogic</artifactId>
-			<version>8.1</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.weblogic/weblogic-maven-plugin -->
+		<!-- https://mvnrepository.com/artifact/weblogic/weblogic -->
+		<!-- https://mvnrepository.com/artifact/weblogic/weblogic -->
+<!--		<dependency>-->
+<!--			<groupId>com.oracle.weblogic</groupId>-->
+<!--			<artifactId>weblogic-maven-plugin</artifactId>-->
+<!--			<version>10.3.6.0</version>-->
+<!--		</dependency>-->
+
+
+
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
