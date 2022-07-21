@@ -129,3 +129,9 @@ JDK 1.5 환경에서는 Anyframe Java Core 5.5.2를 사용해야 하므로, 다�
 ### 매뉴얼
 * [PDF](https://github.com/anyframejava/anyframe-java-core/releases/download/v5.6.0/anyframe-5.6.0.pdf)
 
+dinhtv:
+
+0. install core-parent module ?
+1. install core module
+
+
