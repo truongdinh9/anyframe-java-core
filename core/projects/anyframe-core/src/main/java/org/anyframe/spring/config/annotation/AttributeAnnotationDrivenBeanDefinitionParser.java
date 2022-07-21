@@ -37,7 +37,7 @@ import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.feed.AtomFeedHttpMessageConverter;
 import org.springframework.http.converter.feed.RssChannelHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
@@ -347,7 +347,7 @@ class AttributeAnnotationDrivenBeanDefinitionParser implements BeanDefinitionPar
 						.add(createConverterBeanDefinition(Jaxb2RootElementHttpMessageConverter.class, source));
 			}
 			if (JACKSON_PRESENT) {
-				messageConverters.add(createConverterBeanDefinition(MappingJacksonHttpMessageConverter.class, source));
+				messageConverters.add(createConverterBeanDefinition(MappingJackson2HttpMessageConverter.class, source));
 			}
 			if (romePresent) {
 				messageConverters.add(createConverterBeanDefinition(AtomFeedHttpMessageConverter.class, source));
