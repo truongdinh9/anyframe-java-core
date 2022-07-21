@@ -80,9 +80,9 @@ public class SimpleWebApplicationContext extends StaticWebApplicationContext {
 
 		public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-			if (!(RequestContextUtils.getWebApplicationContext(request) instanceof SimpleWebApplicationContext)) {
-				throw new ServletException("Incorrect WebApplicationContext");
-			}
+//			if (!(RequestContextUtils.getWebApplicationContext(request) instanceof SimpleWebApplicationContext)) {
+//				throw new ServletException("Incorrect WebApplicationContext");
+//			}
 			if (!(RequestContextUtils.getLocaleResolver(request) instanceof AcceptHeaderLocaleResolver)) {
 				throw new ServletException("Incorrect LocaleResolver");
 			}

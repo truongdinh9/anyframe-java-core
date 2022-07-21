@@ -36,9 +36,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport implements
 	private boolean synchronizeOnSession = false;
 
 	@Override
-	public RequestMappingHandlerAdapter requestMappingHandlerAdapter() {
+	public RequestMappingHandlerAdapter createRequestMappingHandlerAdapter() {
 		RequestMappingHandlerAdapter adapter = super
-				.requestMappingHandlerAdapter();
+				.createRequestMappingHandlerAdapter();
 		adapter.setSynchronizeOnSession(synchronizeOnSession);
 		return adapter;
 	}
