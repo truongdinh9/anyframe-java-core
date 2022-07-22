@@ -20,6 +20,8 @@ import java.util.Date;
 import org.anyframe.sample.domain.Genre;
 import org.anyframe.sample.domain.Movie;
 import org.anyframe.sample.transaction.moviefinder.service.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -33,6 +35,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
 	protected ClassPathXmlApplicationContext context;
+	@Autowired
+	@Qualifier("txMovieService")
+	MovieService movieService1;
 
 	/**
 	 * initializing
@@ -67,8 +72,11 @@ public class Main {
 	public void manageMovie() throws Exception {
 
 		// 1. lookup movieService
+//		MovieService movieService = (MovieService) context
+//				.getBean("txMovieService");
+
 		MovieService movieService = (MovieService) context
-				.getBean("txMovieService");
+				.getBean("annotationMovieService");
 
 		// 1. create a new movie
 		Movie movie = getMovie();
@@ -77,6 +85,9 @@ public class Main {
 		// 2. get a movie
 		movie = movieService.get(movie.getMovieId());
 		System.out.println("The product name is a '" + movie.getTitle() + "'.");
+		Movie movie2 = getMovie();
+		movie2.setTitle("title updated");
+		movieService.updateMovieList(movie2,movie);
 	}
 
 	private Movie getMovie() throws Exception {

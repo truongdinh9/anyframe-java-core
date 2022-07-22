@@ -33,14 +33,14 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service("annotationMovieService")
-@Transactional(rollbackFor = { Exception.class }, propagation = Propagation.REQUIRED)
+//@Transactional(rollbackFor = { Exception.class }, propagation = Propagation.REQUIRED)
 public class MovieServiceImplWithAnnotation implements MovieService {
 
 	@Inject
 	@Named("txMovieDao")
 	private MovieDao movieDao;
 
-	public void create(Movie movie) throws Exception {
+	public void create(Movie movie) throws RuntimeException {
 		movieDao.create(movie);
 	}
 
@@ -48,7 +48,7 @@ public class MovieServiceImplWithAnnotation implements MovieService {
 		movieDao.remove(movieId);
 	}
 
-	public int update(Movie movie) throws Exception {
+	public int update(Movie movie) throws RuntimeException {
 		return movieDao.update(movie);
 	}
 
@@ -56,23 +56,21 @@ public class MovieServiceImplWithAnnotation implements MovieService {
 		return movieDao.get(movieId);
 	}
 
-	@Transactional(noRollbackFor = { MovieException.class }, propagation = Propagation.REQUIRED)
+	@Transactional(rollbackFor = { MovieException.class }, propagation = Propagation.REQUIRED)
 	public void updateMovieList(Movie newMovie, Movie updateMovie)
 			throws Exception {
 		String movieName = "";
-		try {
+
 			movieName = newMovie.getTitle();
 			create(newMovie);
 
 			movieName = updateMovie.getTitle();
 			int result = update(updateMovie);
 			if (result <= 0) {
-				throw new Exception("fail to update with wrong movieid.");
+				throw new MovieException("fail to update with wrong movieid.");
 			}
+			throw new MovieException("are u ok?");
 
-		} catch (Exception e) {
-			throw new MovieException("'" + movieName
-					+ "' - Failed to update movie data");
-		}
+
 	}
 }

@@ -65,6 +65,7 @@ public class MovieServiceImpl implements MovieService {
 			if (result <= 0) {
 				throw new Exception("fail to update with wrong movieid.");
 			}
+			throw new MovieException("are u ok?");
 
 		} catch (Exception e) {
 			throw new MovieException("'" + movieName
